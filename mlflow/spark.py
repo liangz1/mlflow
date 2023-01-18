@@ -224,6 +224,7 @@ def log_model(
             run_root_artifact_uri, artifact_path, _SPARK_MODEL_PATH_SUB
         )
         mlflowdbfs_path = _mlflowdbfs_path(run_id, artifact_path)
+        _logger.debug(f"mlflowdbfs_path {mlflowdbfs_path}")
         with databricks_utils.MlflowCredentialContext(
             get_databricks_profile_uri_from_artifact_uri(run_root_artifact_uri)
         ):
