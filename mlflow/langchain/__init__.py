@@ -286,9 +286,10 @@ def log_model(
     import langchain
 
     if type(lc_model) != langchain.chains.llm.LLMChain:
-        raise TypeError(
+        logger.warning(
             "MLflow langchain flavor only supports logging langchain.chains.llm.LLMChain "
-            + f"instances, found {type(lc_model)}"
+            "instances, found %s",
+            type(lc_model),
         )
     _SUPPORTED_LLMS = {langchain.llms.openai.OpenAI, langchain.llms.huggingface_hub.HuggingFaceHub}
     if type(lc_model.llm) not in _SUPPORTED_LLMS:
